@@ -1,0 +1,9 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="50" height="50">
+	<title>linkedin-mark-svg</title>
+	<defs>
+		<image  width="42" height="42" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAqCAMAAADyHTlpAAAAAXNSR0IB2cksfwAAAJBQTFRFAAAAU1NTu7u7////h4eHg4ODSkpKRkZGv7+/7+/v6urqYGBgFhYWaWlp7u7uRERETU1NAAAAY2Nj/v7+srKyZWVlAAAAGhoaSEhIhoaG9fX16OjoMzMzGxsbvb29JSUlAAAAxcXFIiIit7e3Z2dn2NjY9/f31dXVXl5eRUVFKCgoxcXFvb29DQ0N8fHx7e3tG/MEDgAAADB0Uk5TAFO8/4iETEnA8OtiF2vuR08PZP6zZQgdSof16DccvSkBxSa3aNn31l9GLca+FPLt3BgjQgAAALlJREFUeJzt1ckOwiAUBdDbonZCa611nufZ//87LY3RuOi7LJq48G54eTkhBAgAcFwlxnXwTE2GeepAg5NKefBZ6iNgaQBWKlUtDSOtmy2KxvkWtyma5DThZ425tXa0jkKKEqmWwuRdpN2sh/5gOBLpeFKMmM4kOscri6VAP7JKaYq1QDfb3f5QlFk5NRcnPZr6VE7Ppnkx9bWc3kzzXuyBcARf3T/9KUrEhlo8xRYPvMdSz+Yz4r+4Bz7xFPzLS2s5AAAAAElFTkSuQmCC"/>
+	</defs>
+	<style>
+	</style>
+	<use id="Layer copy" href="#img1" x="4" y="4"/>
+</svg>

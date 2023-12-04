@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import React, { FC, PropsWithChildren } from 'react'
+import { Navbar } from '../ui/Navbar';
 
 interface Props extends PropsWithChildren {
     title: string;
@@ -12,9 +13,9 @@ export const XIXLayout: FC<Props> = ({ children, title, pageDescription, imageFu
         <>
             <Head>
                 <title>{title}</title>
-
+                <meta name='author' content='Aaron Quintanal Martín' />
                 <meta name='description' content={pageDescription} />
-
+                <meta name='keywords' content={`${title}, XIX, AQM, Aaron Quintanal Martin, portafolio, portfoil`} />
                 <meta name='og:title' content={title} />
                 <meta name='og:description' content={pageDescription} />
 
@@ -25,9 +26,7 @@ export const XIXLayout: FC<Props> = ({ children, title, pageDescription, imageFu
                 }
             </Head>
 
-            <nav>
-                {/* NAVBAR */}
-            </nav>
+            <Navbar />
 
             <main style={{
                 margin: '80px auto',
