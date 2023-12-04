@@ -13,8 +13,7 @@ export const PresentationLayout = () => {
             alignItems={'center'}
             minHeight={'100vh'}
         >
-
-            <Grid item xs={12} sm={5} >
+            <Grid item xs={12} sm={12} md={6} xl={5} >
                 <Typography variant='h1' component={'h1'}>XIX</Typography>
                 <Typography variant='h2' component={'h2'}>Aarón Quintanal Martín</Typography>
 
@@ -36,7 +35,9 @@ export const PresentationLayout = () => {
                 </Box>
             </Grid>
 
-            <Grid item xs={12} sm={5}>
+            <Grid item xs={12} md={5} xl={5} sx={{
+                display: { xl: 'flex', md: 'flex', sm: 'none', xs: 'none' }
+            }}>
                 <Box borderRadius={'50%'} overflow={'hidden'}>
                     <Image
                         src={ProfilePic} alt={''}

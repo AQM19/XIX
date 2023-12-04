@@ -11,9 +11,6 @@ export const ProjectsLayout = () => {
             alignItems={'center'}
             minHeight={'100vh'}
             gap={2}
-            sx={{
-                backgroundColor: '#4a148c'
-            }}
         >
             <ProjectList projects={initialData.projects} />
         </Grid >

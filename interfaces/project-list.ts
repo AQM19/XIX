@@ -5,7 +5,7 @@ export interface IProjecListResponse {
 export interface IProject {
     _id: string;
     title: string;
-    description?: string;
+    description: string;
     image?: string;
     slug: string;
     tag: string[];

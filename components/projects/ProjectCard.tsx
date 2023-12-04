@@ -1,5 +1,5 @@
 import { IProject } from '@/interfaces/project-list';
-import { Box, Card, CardActionArea, CardMedia, Grid, Link, Typography } from '@mui/material';
+import { Box, Card, CardActionArea, CardHeader, CardMedia, Grid, Link, Typography, CardContent, Chip } from '@mui/material';
 import { useRouter } from 'next/router';
 import React, { FC } from 'react'
 import NextLink from 'next/link';
@@ -10,15 +10,13 @@ interface Props {
 
 export const ProjectCard: FC<Props> = ({ project }) => {
 
-    const router = useRouter();
-    const onClick = () => {
-        router.push(`/name/${project.title}`)
-    }
-
     return (
-        <Grid item xs={6} sm={3} md={2} xl={1} key={project._id}>
+        <Grid item xs={6} sm={6} md={4} xl={3} key={project._id}>
             <Card>
-                <NextLink href={`/projects/${project.slug}`} prefetch={false} passHref legacyBehavior>
+                <CardHeader
+                    title={project.title}
+                />
+                <NextLink href={`/projects/${project.title}`} prefetch={false} passHref legacyBehavior>
                     <Link>
                         <CardActionArea>
                             <CardMedia
@@ -29,11 +27,16 @@ export const ProjectCard: FC<Props> = ({ project }) => {
                         </CardActionArea>
                     </Link>
                 </NextLink>
+                <CardContent>
+                    <Box display={'flex'} gap={1}>
+                        {
+                            project.tag.map(tag => (
+                                <Chip label={tag} color='primary'/>
+                            ))
+                        }
+                    </Box>
+                </CardContent>
             </Card>
-
-            <Box sx={{ mt: 1 }} className='fadeIn'>
-                <Typography fontWeight={700}>{project.title}</Typography>
-            </Box>
 
         </Grid>
     )
