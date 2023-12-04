@@ -1,11 +1,9 @@
-import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
+import { XIXLayout } from '@/components/layouts'
 
 export default function Home() {
   return (
-    <>
-      <h1>PORTAFOLIO EN CONSTRUCCIÓN</h1>
-    </>
+    <XIXLayout title={'Quintanal - Portfoil'} pageDescription={'Portfafolio de desarrollador multiplataforma Aarón Quintanal Martín'}>
+      <h1>XIX</h1>
+    </XIXLayout>
   )
 }
