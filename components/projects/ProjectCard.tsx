@@ -30,7 +30,7 @@ export const ProjectCard: FC<Props> = ({ project }) => {
                     <Box display={'flex'} gap={1}>
                         {
                             project.tag.map(tag => (
-                                <Chip label={tag.value} color='primary'/>
+                                <Chip label={tag.value} color='primary' key={project.slug}/>
                             ))
                         }
                     </Box>
