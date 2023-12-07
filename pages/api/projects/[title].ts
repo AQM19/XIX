@@ -5,13 +5,13 @@ import { IProject } from '../../../interfaces/project-list';
 
 type Data =
     | { message: string }
-    | IProject[]
+    | IProject
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
 
     switch (req.method) {
         case 'GET':
-            return getProducts(req, res)
+            return getProjectByTitle(req, res)
 
         default:
             return res.status(400).json({
@@ -20,13 +20,17 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
     }
 }
 
-const getProducts = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
+export const getProjectByTitle = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
+
+    const { title } = req.query;
 
     await db.connect();
-    const products = await Project.find()
-        .select('title tag slug logo description -_id')
-        .lean();
+    const project = await Project.findOne({ title: title as string }).lean();
     await db.disconnect();
 
-    return res.status(200).json(products)
+    if (project) {
+        return res.status(200).json(project);
+    } else {
+        return res.status(404).json({ message: 'Project not found' });
+    }
 }

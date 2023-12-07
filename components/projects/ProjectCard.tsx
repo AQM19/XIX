@@ -1,5 +1,5 @@
 import { IProject } from '@/interfaces/project-list';
-import { Box, Card, CardActionArea, CardHeader, CardMedia, Grid, Link, CardContent, Chip } from '@mui/material';
+import { Box, Card, CardActionArea, CardHeader, CardMedia, Grid, Link, CardContent, Chip, Typography } from '@mui/material';
 import React, { FC } from 'react'
 import NextLink from 'next/link';
 
@@ -10,10 +10,13 @@ interface Props {
 export const ProjectCard: FC<Props> = ({ project }) => {
 
     return (
-        <Grid item xs={6} sm={6} md={4} xl={3} key={project.slug}>
+        <Grid item xs={12} sm={6} md={4} xl={3} key={project.slug}>
             <Card>
                 <CardHeader
                     title={project.title}
+                    sx={{
+                        textAlign: 'center'
+                    }}
                 />
                 <NextLink href={`/projects/${project.title}`} prefetch={false} passHref legacyBehavior>
                     <Link>
@@ -27,10 +30,10 @@ export const ProjectCard: FC<Props> = ({ project }) => {
                     </Link>
                 </NextLink>
                 <CardContent>
-                    <Box display={'flex'} gap={1}>
+                    <Box display={'flex'} justifyContent='center' gap={1}>
                         {
                             project.tag.map(tag => (
-                                <Chip label={tag.value} color='primary' key={project.slug}/>
+                                <Chip label={tag.value} color='primary' key={tag.value} />
                             ))
                         }
                     </Box>
