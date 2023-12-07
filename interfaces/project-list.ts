@@ -1,32 +1,33 @@
 export interface IProject {
-    _id: string;
-    description: IInternationalization<string>[];
-    documentation: IInternationalization<string>[];
+    description: IInternationalization[];
+    documentation?: IInternationalization[];
     github?: string;
     link?: string;
-    logo: string;
+    logo?: string;
     slug: string;
     available_languages: ILanguage[];
-    tag: IInternationalization<string>[];
-    title: IInternationalization<string>[];
+    tag: IInternationalization[];
+    title: string;
     category: IProjectCategory;
     dateFrom: Date;
     dateTo?: Date;
     developers: IDeveloper[];
     status: IProjectStatus;
+    createdAt: string;
+    updatedAt: string;
 }
 
 export interface IDeveloper {
-    _id: string;
     name: string;
     surname: string;
     github?: string;
+    linkedin?: string;
     portfoil?: string;
 }
 
-export interface IInternationalization<T> {
+export interface IInternationalization {
     lang: ILanguage;
-    value: T;
+    value: string
 }
 
 export type ILanguage =

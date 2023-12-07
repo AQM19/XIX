@@ -10,7 +10,7 @@ interface Props {
 
 const ProjectByNamePage: NextPage<Props> = ({ project }) => {
     return (
-        <XIXLayout title={project.title} pageDescription={project.description}>
+        <XIXLayout title={project.title} pageDescription={project.description[0].value}>
             <Grid container
                 sx={{ marginTop: 5 }}
                 gap={2}
@@ -19,8 +19,8 @@ const ProjectByNamePage: NextPage<Props> = ({ project }) => {
                     <CardActionArea>
                         <CardMedia
                             component='img'
-                            image={project.image}
-                            alt={project.description}
+                            image={project.logo}
+                            alt={project.description[0].value}
                         />
                     </CardActionArea>
                 </Grid>
@@ -34,7 +34,7 @@ const ProjectByNamePage: NextPage<Props> = ({ project }) => {
                             <Typography variant='h1' textTransform={'capitalize'}>{project.title}</Typography>
                         </CardHeader>
                         <CardContent>
-                            <Typography variant='body1'>{project.description}</Typography>
+                            <Typography variant='body1'>{project.description[0].value}</Typography>
                         </CardContent>
                     </Card>
                 </Grid>

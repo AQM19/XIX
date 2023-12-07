@@ -1,36 +1,59 @@
-import { IProject } from "@/interfaces/project-list";
+import { IDeveloper, IProject } from "@/interfaces/project-list";
 
-export const initialData: IProject[] = [
+interface SeedData {
+    projects: IProject[];
+}
+
+export const baseDevelopers: IDeveloper[] = [
     {
-        _id: '1',
-        title: [
-            { lang: 'es', value: 'Autoterra' }
-        ],
-        description: [
-            { lang: 'es', value: 'Terrario automatizado' },
-        ],
-        documentation: [
-            {lang: 'es', value: ''}
-        ],
-        github: '',
-        link: '',
-        logo: '',
-        slug: 'q_tech_autoterra',
-        tag: [
-            {lang: 'es', value: 'Multiplataforma'}
-        ],
-        available_languages: ['es'],
-        category: "personal",
-        dateFrom: Date,
+        name: 'Aarón',
+        surname: 'Quintanal Martín',
+        github: 'https://github.com/AQM19',
+        portfoil: 'https://xix-seven.vercel.app/'
+    }
+]
 
-    },
-    // {
-    //     _id: '2',
-    //     title: 'FuckOffendiditos',
-    //     description: 'Página de humor',
-    //     slug: 'fuck_offendiditos',
-    //     tag: ['webpage'],
-    //     type: "professional",
-    //     image: '/svg/github-mark-white.svg'
-    // }
-];
+export const initialData: SeedData = {
+    projects: [
+        {
+            title:'Auto-Terra',
+            description: [
+                { lang: 'es', value: 'Terrario automatizado' },
+            ],
+            slug: 'xix_aqm_autoterra',
+            tag: [
+                {lang: 'es', value: 'Multiplataforma'},
+                {lang: 'es', value: 'Ecosostenible'},
+            ],
+            available_languages: ['es'],
+            category: "personal",
+            dateFrom: new Date(),
+            dateTo: new Date(),
+            developers: [
+                baseDevelopers[0]
+            ],
+            status: "finished",
+            createdAt: '',
+            updatedAt: ''
+        },
+        {
+            title: 'Fuck Offendiditos',
+            description: [
+                { lang: 'es', value: 'Página de humor para contar historias sobre la generación de cristal' },
+            ],
+            slug: 'xix_aqm_fuckoffendiditos',
+            tag: [
+                {lang: 'es', value: 'Web'},
+            ],
+            available_languages: ['es'],
+            category: "freelance",
+            dateFrom: new Date(),
+            developers: [
+                baseDevelopers[0]
+            ],
+            status: "planification",
+            createdAt: '',
+            updatedAt: ''
+        }
+    ]   
+};

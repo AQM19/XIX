@@ -1,0 +1,8 @@
+services:
+  xixdb:
+    image: mongo:5.0.0
+    container_name: xix-database
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongo:/data/db
