@@ -1,4 +1,4 @@
-import { Grid, Card, CardContent, CardHeader, Typography } from '@mui/material'
+import { Grid, Card, CardContent, CardHeader, Typography, Box, Chip, Button } from '@mui/material'
 import React, { FC } from 'react'
 import { XIXLayout } from '@/components/layouts';
 import { IProject } from '@/interfaces';
@@ -17,10 +17,32 @@ const ProjectPageByTitle: FC<Props> = ({ project }) => {
         <XIXLayout title={project.title} pageDescription={project.description[0].value}>
 
             <Grid container>
-                <Grid item xs={12} sm={12} display={'flex'} flexDirection={'column'}>
-                    <Typography variant='h1' component={'h1'}>{project.title}</Typography>
+                <Grid item xs={12} sm={6} display={'flex'} flexDirection={'column'} gap={5}>
+                    <Box>
+                        <Typography variant='h2' component={'h1'}>{project.title}</Typography>
+                        <Typography variant='h6' component={'h2'} color={'secondary'}>Subheader</Typography>
+                    </Box>
 
-                    <Typography variant='body1' component={'body'}>{project.description[0].value}</Typography>
+                    <Box>
+                        <Typography variant='body1'>{project.description[0].value}</Typography>
+                        <Box marginTop={1}>
+                            {
+                                project.tag.map(tag => (
+                                    <Chip key={tag.value} label={tag.value} color='primary' sx={{ marginRight: 2 }} />
+                                )
+                                )
+                            }
+                        </Box>
+                    </Box>
+
+                    <Box>
+                        <Button variant='outlined'>Descarga</Button>
+                    </Box>
+
+                </Grid>
+
+                <Grid item xs={12} sm={6} display={'flex'}>
+                    {/* TODO imagelist */}
                 </Grid>
             </Grid>
 

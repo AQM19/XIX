@@ -1,4 +1,5 @@
-import { Box, Button, Card, Grid, Typography } from '@mui/material'
+import { Box, Button, Card, Grid, Link, Typography } from '@mui/material'
+import NextLink from 'next/link';
 import Image from 'next/image';
 import React from 'react'
 
@@ -31,7 +32,11 @@ export const PresentationLayout = () => {
                 </Box>
 
                 <Box display={'flex'} justifyContent={'end'}>
-                    <Button color='primary' variant='outlined'>Contacto</Button>
+                    <NextLink href={'/#Contact'} passHref legacyBehavior>
+                        <Link>
+                            <Button color='primary' variant='outlined'>Contacto</Button>
+                        </Link>
+                    </NextLink>
                 </Box>
             </Grid>
 

@@ -22,19 +22,19 @@ export const Navbar = () => {
 
                 <Box sx={{ display: { xs: 'none', sm: 'flex' } }} gap={2}>
 
-                    <NextLink href='#Index' passHref legacyBehavior>
+                    <NextLink href='/#Index' passHref legacyBehavior>
                         <Link>
                             <Button>Inicio</Button>
                         </Link>
                     </NextLink>
 
-                    <NextLink href='#Projects' passHref legacyBehavior>
+                    <NextLink href='/#Projects' passHref legacyBehavior>
                         <Link>
                             <Button>Proyectos</Button>
                         </Link>
                     </NextLink>
 
-                    <NextLink href='#Contact' passHref legacyBehavior>
+                    <NextLink href='/#Contact' passHref legacyBehavior>
                         <Link>
                             <Button>Contacto</Button>
                         </Link>
