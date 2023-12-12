@@ -1,18 +1,34 @@
 import { Box, Divider, Drawer, IconButton, Input, InputAdornment, List, ListItem, ListItemIcon, ListItemText, ListSubheader } from "@mui/material"
-import { AccountCircleOutlined, AdminPanelSettings, CategoryOutlined, ConfirmationNumberOutlined, EscalatorWarningOutlined, FemaleOutlined, LoginOutlined, MaleOutlined, SearchOutlined, VpnKeyOutlined } from "@mui/icons-material"
+import { AdminPanelSettings, CategoryOutlined, EscalatorWarningOutlined, FemaleOutlined, MaleOutlined, SearchOutlined } from "@mui/icons-material"
+import { useContext } from "react";
+import { UIContext } from "@/context/ui";
+import { useRouter } from "next/router";
+
+import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
+import RecentActorsOutlinedIcon from '@mui/icons-material/RecentActorsOutlined';
+import DesktopMacOutlinedIcon from '@mui/icons-material/DesktopMacOutlined';
 
 export const SideMenu = () => {
+
+    const router = useRouter();
+    const { isMenuOpen, toggleSideMenu } = useContext(UIContext);
+
+    const navigateTo = (url: string) => {
+        toggleSideMenu();
+        router.push(url);
+    };
+
     return (
         <Drawer
-            open={false}
-            anchor='right'
+            open={isMenuOpen}
+            onClose={toggleSideMenu}
+            anchor='left'
             sx={{ backdropFilter: 'blur(4px)', transition: 'all 0.5s ease-out' }}
         >
             <Box sx={{ width: 250, paddingTop: 5 }}>
 
                 <List>
-
-                    <ListItem>
+                    {/* <ListItem>
                         <Input
                             type='text'
                             placeholder="Buscar..."
@@ -26,31 +42,37 @@ export const SideMenu = () => {
                                 </InputAdornment>
                             }
                         />
-                    </ListItem>
+                    </ListItem> */}
 
-                    <ListItem button sx={{ display: { xs: '', sm: 'none' } }}>
+                    <ListItem
+                        button
+                        onClick={() => navigateTo('/#Index')}>
                         <ListItemIcon>
-                            <MaleOutlined />
+                            <PersonOutlineOutlinedIcon />
                         </ListItemIcon>
                         <ListItemText primary={'Index'} />
                     </ListItem>
 
-                    <ListItem button sx={{ display: { xs: '', sm: 'none' } }}>
+                    <ListItem
+                        button
+                        onClick={() => navigateTo('/#Projects')}>
                         <ListItemIcon>
-                            <FemaleOutlined />
+                            <DesktopMacOutlinedIcon />
                         </ListItemIcon>
                         <ListItemText primary={'Proyectos'} />
                     </ListItem>
 
-                    <ListItem button sx={{ display: { xs: '', sm: 'none' } }}>
+                    <ListItem
+                        button
+                        onClick={() => navigateTo('/#Contact')}>
                         <ListItemIcon>
-                            <EscalatorWarningOutlined />
+                            <RecentActorsOutlinedIcon />
                         </ListItemIcon>
                         <ListItemText primary={'Contacto'} />
                     </ListItem>
 
                     {/* Admin */}
-                    <Divider />
+                    {/* <Divider />
                     <ListSubheader>Admin Panel</ListSubheader>
 
                     <ListItem button>
@@ -65,7 +87,7 @@ export const SideMenu = () => {
                             <AdminPanelSettings />
                         </ListItemIcon>
                         <ListItemText primary={'Programadores'} />
-                    </ListItem>
+                    </ListItem> */}
                 </List>
             </Box>
         </Drawer>

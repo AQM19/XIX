@@ -1,13 +1,44 @@
 import NextLink from 'next/link';
 import Image from 'next/image';
+import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
+import Cookies from 'js-cookie';
 
-import { AppBar, Box, Button, IconButton, Link, Toolbar, Typography } from '@mui/material'
+import { AppBar, Box, Button, FormControl, IconButton, InputLabel, Link, MenuItem, Select, SelectChangeEvent, Switch, Theme, Toolbar, Typography, styled } from '@mui/material'
+import { ChangeEvent, FC, useContext, useState } from 'react';
+import { UIContext } from '@/context/ui';
+import { darkTheme, lightTheme } from '@/themes';
 
 export const Navbar = () => {
-    
+
+    const { toggleSideMenu } = useContext(UIContext);
+
+    const [currentTheme, setCurrentTheme] = useState(darkTheme);
+    const [getThemne, setTheme] = useState('');
+
+    const handleChange = (event: SelectChangeEvent) => {
+        const selectedTheme = event.target.value;
+        setTheme(event.target.value as string);
+
+        console.log(currentTheme);
+
+        setCurrentTheme(selectedTheme === 'lightTheme' ?
+            lightTheme :
+            darkTheme);
+    };
+
     return (
         <AppBar position='sticky'>
             <Toolbar>
+
+                <IconButton
+                    size='large'
+                    edge='start'
+                    onClick={toggleSideMenu}
+                >
+                    <MenuOutlinedIcon />
+                </IconButton>
+
+                <Box flex={0.1}></Box>
 
                 <NextLink href='/' legacyBehavior>
                     <Link display='flex' alignItems='center' underline='none' sx={{
@@ -57,6 +88,22 @@ export const Navbar = () => {
                         </Link>
                     </NextLink>
                 </Box>
+
+                <Box flex={0.1}></Box>
+
+                {/* <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">Age</InputLabel>
+                    <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        value={getThemne}
+                        label="Age"
+                        onChange={handleChange}
+                    >
+                        <MenuItem value={'lightTheme'}>Light</MenuItem>
+                        <MenuItem value={'darkTheme'}>Dark</MenuItem>
+                    </Select>
+                </FormControl> */}
 
             </Toolbar>
         </AppBar>
