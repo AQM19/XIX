@@ -1,14 +1,18 @@
 import { IProject } from '@/interfaces/project-list';
-import { Box, Card, CardActionArea, CardHeader, CardMedia, Grid, Link, CardContent, Chip, Typography, Avatar, CardActions, Button } from '@mui/material';
+import { Box, Card, CardActionArea, CardHeader, CardMedia, Grid, Link, CardContent, Chip, Typography, Avatar, CardActions, Button, useTheme } from '@mui/material';
 import React, { FC } from 'react'
 import NextLink from 'next/link';
-import { red } from '@mui/material/colors';
+
+import GithubLight from '@/public/svg/github-mark-white.svg'
+import GithubDark from '@/public/svg/github-mark.svg'
 
 interface Props {
     project: IProject;
 }
 
 export const ProjectCard: FC<Props> = ({ project }) => {
+
+    const theme = useTheme();
 
     return (
         <Grid item xs={12} sm={6} md={4} xl={3} key={project.slug}>
@@ -28,7 +32,7 @@ export const ProjectCard: FC<Props> = ({ project }) => {
                     <CardMedia
                         component='img'
                         height={200}
-                        image={'svg/github-mark-white.svg'}
+                        image={`${theme.palette.mode === 'light' ? GithubDark.src : GithubLight.src}`}
                         alt={project.description[0].value}
                     />
                 </CardActionArea>

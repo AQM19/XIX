@@ -1,11 +1,15 @@
-import { Box, Button, Card, Grid, Link, Typography } from '@mui/material'
+import { Box, Button, Card, Grid, Link, Typography, useTheme } from '@mui/material'
 import NextLink from 'next/link';
 import Image from 'next/image';
 import React from 'react'
 
-import ProfilePic from '@/public/images/profile_dark_theme.png'
+import DarkProfilePic from '@/public/images/profile_dark_theme.png'
+import LightProfilePic from '@/public/images/profile_light_theme.png'
 
 export const PresentationLayout = () => {
+
+    const theme = useTheme();
+
     return (
         <Grid id='Index' container
             display={'flex'}
@@ -22,19 +26,19 @@ export const PresentationLayout = () => {
                 alignItems={'center'}
                 sx={{
                     position: 'relative',
-                    backgroundImage: `url(${ProfilePic.src})`,
+                    backgroundImage: `url(${theme.palette.mode === 'dark' ? DarkProfilePic.src : LightProfilePic.src})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     backgroundClip: 'content-box',
-                    boxShadow: '0 0 150px 150px #121212 inset'
+                    boxShadow: `0 0 150px 150px ${theme.palette.mode === 'dark' ? '#121212' : '#E0E0E0'} inset`,
                 }}>
 
                 <Box
                     padding={5}
                     borderRadius={5}
                     sx={{
-                        width: { xl: '50vw', sm: '75vw', xs: '100vw' },
-                        backgroundColor: 'rgba(18,18,18,0.8)'
+                        width: { xl: '50vw', sm: '75vw', xs: '90vw' },
+                        backgroundColor: theme.palette.mode === 'dark' ? 'rgba(18,18,18,0.8)' : 'rgba(255,255,255,0.8)',
                     }}>
 
                     <Typography variant='h1' component={'h1'}>XIX</Typography>

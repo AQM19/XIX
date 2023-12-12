@@ -10,21 +10,21 @@ import { useEffect, useState } from 'react';
 
 export default function App({ Component, pageProps }: AppProps) {
 
-  // const [currentTheme, setCurrentTheme] = useState(darkTheme);
+  const [currentTheme, setCurrentTheme] = useState(lightTheme);
 
-  // useEffect(() => {
+  useEffect(() => {
 
-  //   const cookieTheme = Cookies.get('theme') || lightTheme;
-  //   const selectedTheme = cookieTheme === lightTheme
-  //     ? lightTheme
-  //     : darkTheme
+    const cookieTheme = Cookies.get('theme') || lightTheme;
+    const selectedTheme = cookieTheme === lightTheme
+      ? lightTheme
+      : darkTheme
 
-  //   setCurrentTheme(selectedTheme);
-  // }, [])
+    setCurrentTheme(selectedTheme);
+  }, [])
 
   return (
     <UIProvider>
-      <ThemeProvider theme={darkTheme}>
+      <ThemeProvider theme={currentTheme}>
         <CssBaseline />
         <Component {...pageProps} />
       </ThemeProvider>

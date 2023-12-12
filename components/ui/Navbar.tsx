@@ -1,30 +1,20 @@
 import NextLink from 'next/link';
 import Image from 'next/image';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
-import Cookies from 'js-cookie';
 
-import { AppBar, Box, Button, FormControl, IconButton, InputLabel, Link, MenuItem, Select, SelectChangeEvent, Switch, Theme, Toolbar, Typography, styled } from '@mui/material'
-import { ChangeEvent, FC, useContext, useState } from 'react';
+import { AppBar, Box, Button, IconButton, Link, Toolbar, Typography, useTheme } from '@mui/material'
+import { useContext } from 'react';
 import { UIContext } from '@/context/ui';
-import { darkTheme, lightTheme } from '@/themes';
+
+import GithubLight from '@/public/svg/github-mark-white.svg'
+import GithubDark from '@/public/svg/github-mark.svg'
+import LinkedInLight from '@/public/svg/linkedin-mark-white.svg'
+import LinkedInDark from '@/public/svg/linkedin-mark.svg'
 
 export const Navbar = () => {
 
     const { toggleSideMenu } = useContext(UIContext);
-
-    const [currentTheme, setCurrentTheme] = useState(darkTheme);
-    const [getThemne, setTheme] = useState('');
-
-    const handleChange = (event: SelectChangeEvent) => {
-        const selectedTheme = event.target.value;
-        setTheme(event.target.value as string);
-
-        console.log(currentTheme);
-
-        setCurrentTheme(selectedTheme === 'lightTheme' ?
-            lightTheme :
-            darkTheme);
-    };
+    const theme = useTheme();
 
     return (
         <AppBar position='sticky'>
@@ -41,7 +31,7 @@ export const Navbar = () => {
                 <Box flex={0.1}></Box>
 
                 <NextLink href='/' legacyBehavior>
-                    <Link display='flex' alignItems='center' underline='none' sx={{
+                    <Link display='flex' alignItems='center' underline='none' color={'primary'} sx={{
                         cursor: 'pointer'
                     }} >
                         <Typography variant='h6'>XIX</Typography>
@@ -78,33 +68,16 @@ export const Navbar = () => {
                 <Box display={'flex'} gap={3}>
                     <NextLink href='https://www.linkedin.com/in/aar%C3%B3n-quintanal-mart%C3%ADn-6116b5270/' passHref legacyBehavior>
                         <Link target='_blank' rel="noopener noreferrer">
-                            <Image src={'/svg/linkedin-mark-white.svg'} alt={''} width={35} height={35} />
+                            <Image src={`${theme.palette.mode === 'light' ? LinkedInDark.src : LinkedInLight.src}`} alt={''} width={35} height={35} />
                         </Link>
                     </NextLink>
 
                     <NextLink href='https://github.com/AQM19?tab=repositories' passHref legacyBehavior>
                         <Link target='_blank' rel="noopener noreferrer">
-                            <Image src={'/svg/github-mark-white.svg'} alt={''} width={35} height={35} />
+                            <Image src={`${theme.palette.mode === 'light' ? GithubDark.src : GithubLight.src}`} alt={''} width={35} height={35} />
                         </Link>
                     </NextLink>
                 </Box>
-
-                <Box flex={0.1}></Box>
-
-                {/* <FormControl fullWidth>
-                    <InputLabel id="demo-simple-select-label">Age</InputLabel>
-                    <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        value={getThemne}
-                        label="Age"
-                        onChange={handleChange}
-                    >
-                        <MenuItem value={'lightTheme'}>Light</MenuItem>
-                        <MenuItem value={'darkTheme'}>Dark</MenuItem>
-                    </Select>
-                </FormControl> */}
-
             </Toolbar>
         </AppBar>
     )

@@ -1,5 +1,4 @@
-import { Box, Divider, Drawer, IconButton, Input, InputAdornment, List, ListItem, ListItemIcon, ListItemText, ListSubheader } from "@mui/material"
-import { AdminPanelSettings, CategoryOutlined, EscalatorWarningOutlined, FemaleOutlined, MaleOutlined, SearchOutlined } from "@mui/icons-material"
+import { Box, Drawer, List, ListItem, ListItemIcon, ListItemText } from "@mui/material"
 import { useContext } from "react";
 import { UIContext } from "@/context/ui";
 import { useRouter } from "next/router";
@@ -88,6 +87,7 @@ export const SideMenu = () => {
                         </ListItemIcon>
                         <ListItemText primary={'Programadores'} />
                     </ListItem> */}
+
                 </List>
             </Box>
         </Drawer>
